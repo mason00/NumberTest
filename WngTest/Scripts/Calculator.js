@@ -1,4 +1,4 @@
-﻿(function Calculator() {
+﻿function Calculator() {
     this.input = $('#numberBox');
     this.error = $('#error');
     this.output = $('#output');
@@ -10,7 +10,13 @@
     this.error.hide();
     this.enterButton = $('#enterButton').click(function () { enter() });
 
-    this.initNumberArray = function () {
+    this.inputNumbers = [];
+    this.oddNumbers = [];
+    this.evenNumbers = [];
+    this.allceNumbers = [];
+    this.fibonacciNumbers = [];
+
+    initNumberArray = function () {
         this.inputNumbers = [];
         this.oddNumbers = [];
         this.evenNumbers = [];
@@ -62,32 +68,32 @@
     }
 
     this.testOddNumber = function (number) {
-        if (number % 2 == 0)
+        if (number % 2 != 0)
         {
-            oddNumbers.push(number);
+            this.oddNumbers.push(number);
         }
     }
 
     this.testEvenNumber = function (number) {
-        if (number % 2 != 0) {
-            evenNumbers.push(number);
+        if (number % 2 == 0) {
+            this.evenNumbers.push(number);
         }
     }
 
     this.allceTest = function (number) {
         if (number % 3 == 0 && number % 5 == 0) {
-            allceNumbers.push('Z');
+            this.allceNumbers.push('Z');
             return;
         }
         if (number % 5 == 0) {
-            allceNumbers.push('E');
+            this.allceNumbers.push('E');
             return;
         }
         if (number % 3 == 0) {
-            allceNumbers.push('C');
+            this.allceNumbers.push('C');
             return;
         }
-        allceNumbers.push(number);
+        this.allceNumbers.push(number);
     }
 
     this.reset = function () {
@@ -107,10 +113,12 @@
 
         while (n1 < number)
         {
-            fibonacciNumbers.push(n1);
+            this.fibonacciNumbers.push(n1);
             n1 = n2;
             n2 = n3;
             n3 = n1 + n2;
         }
     }
-})();
+};
+
+Calculator();
